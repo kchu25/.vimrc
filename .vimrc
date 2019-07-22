@@ -82,6 +82,7 @@ EOF
 " Syntax Checking/Highlighting
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
+" make sure flake 8 is installed: https://github.com/nvie/vim-flake8
 let python_highlight_all=1
 syntax on
 
@@ -126,6 +127,33 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'lifepillar/vim-mucomplete'
 
+" also this is for latex; see https://github.com/gillescastel/latex-snippets
+Plug 'sirver/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories = ['/Users/kueihsienchu/.vim/plugged/ultisnips']
+let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
+setlocal spell
+set spelllang=en_us
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -136,3 +164,6 @@ set completeopt+=menuone
 set completeopt+=noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
+
+
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
