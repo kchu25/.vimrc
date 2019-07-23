@@ -87,17 +87,16 @@ let python_highlight_all=1
 syntax on
 
 " Color Schemes
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-
-"  set background=dark
+"Plugin 'jnurmine/Zenburn'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'arcticicestudio/nord-vim' "  set background=dark
 "  colorscheme solarized
 
-colorscheme zenburn
+"colorscheme zenburn
 
 
 "  To make switching between them
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
 
 " file browsing
 Plugin 'scrooloose/nerdtree'
@@ -141,7 +140,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-
+" nice tex-conceal math symbols
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} "
+" vimtex
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 "let g:vimtex_view_method='zathura'
@@ -150,7 +151,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-
 setlocal spell
 set spelllang=en_us
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
@@ -158,8 +158,9 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-" https://github.com/lifepillar/vim-mucomplete
+colorscheme nord
+" correct syntax coloring for latex
+hi Conceal guibg=#2E3440 guifg=white
 
 set completeopt+=menuone
 set completeopt+=noselect
@@ -168,3 +169,4 @@ set belloff+=ctrlg " If Vim beeps during completion
 
 
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+
