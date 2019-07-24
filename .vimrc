@@ -1,4 +1,4 @@
-
+:set spell
 " note that here is based on: https://realpython.com/vim-and-python-a-match-made-in-heaven/
 
 set nu
@@ -132,9 +132,9 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 let g:UltiSnipsSnippetDirectories = ['/Users/kueihsienchu/.vim/plugged/ultisnips']
 let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
 " let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
@@ -170,3 +170,8 @@ set belloff+=ctrlg " If Vim beeps during completion
 
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
+" spelling auto correct
+setlocal spell
+set spelllang=en_gb
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <key> <C-o>de
